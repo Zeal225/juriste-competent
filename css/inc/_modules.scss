@@ -1,0 +1,559 @@
+/* -----------------------------------------
+	05. Modules
+----------------------------------------- */
+
+/* General Layout
+=================================== */
+.container {
+	@include media-breakpoint-down(xs) {
+		width: 100%;
+	}
+}
+
+.main {
+	padding: $section-padding-lg 0;
+
+	@include media-breakpoint-up(xl) {
+		// Add more spacing between sidebar and main content
+		> .container {
+			> .row {
+				> .col-lg-8 {
+					padding-right: 45px;
+				}
+
+				> .push-lg-4 {
+					padding-right: $grid-gutter-width-base / 2;
+					padding-left: 45px;
+				}
+			}
+		}
+	}
+
+	@include media-breakpoint-down(md) {
+		padding: $section-padding-md 0;
+	}
+
+	@include media-breakpoint-down(sm) {
+		padding: $section-padding-sm 0;
+	}
+}
+
+.sidebar {
+	@include media-breakpoint-down(md) {
+		margin-top: 80px;
+	}
+}
+
+/* Sections
+=================================== */
+.widget-sections {
+	padding: 0;
+}
+
+.widget-section {
+	padding: $section-padding-lg 0;
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+
+	@include media-breakpoint-down(md) {
+		padding: $section-padding-md 0;
+	}
+
+	@include media-breakpoint-down(sm) {
+		padding: $section-padding-sm 0;
+	}
+
+	&:not(.widget-section-padded) + &:not(.widget-section-padded) {
+		margin-top: -$section-padding-lg;
+
+		@include media-breakpoint-down(md) {
+			margin-top: -$section-padding-md;
+		}
+
+		@include media-breakpoint-down(sm) {
+			margin-top: -$section-padding-sm;
+		}
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+
+	&.null-instagram-feed {
+		padding-bottom: 0;
+	}
+}
+
+.widget-section-parallax {
+	background-attachment: fixed;
+}
+
+.section-heading {
+	margin-bottom: 45px;
+	text-align: center;
+}
+
+.section-title {
+	font-size: 30px;
+	margin: 0;
+
+	@include media-breakpoint-down(sm) {
+		font-size:  26px;
+	}
+}
+
+.section-subtitle {
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 11px;
+	letter-spacing: .2em;
+
+	a {
+		color: $text-color;
+	}
+}
+
+/* SECTION: Theme - Newsletter
+========================================= */
+.widget_ci-newsletter { // sass-lint:disable-line class-name-format
+	&.widget-section-padded {
+		padding: 30px 0;
+	}
+}
+
+.form-newsletter {
+	display: flex;
+	align-items: center;
+
+	input {
+		margin-right: 15px;
+		border: 0;
+	}
+
+	@include media-breakpoint-down(md) {
+		margin-top: 30px;
+	}
+
+	@include media-breakpoint-down(xs) {
+		display: block;
+
+		input {
+			margin-bottom: 15px;
+		}
+
+		button {
+			display: block;
+			width: 100%;
+		}
+	}
+}
+
+.widget-newsletter-title {
+	margin-bottom: 0;
+	line-height: normal;
+}
+
+.widget-newsletter-subtitle {
+	margin-bottom: 0;
+}
+
+/* Entry Styles
+=================================== */
+.entry {
+	margin: 0 0 100px;
+
+	.single & {
+		margin-bottom: 0;
+	}
+}
+
+.entry-header {
+	margin-bottom: 50px;
+	text-align: center;
+
+	[class^="col-sm-6"] &,
+	[class^="col-lg-4"] & {
+		margin-bottom: 25px;
+	}
+
+	@include media-breakpoint-down(sm) {
+		margin-bottom: 25px;
+	}
+}
+
+.entry-title {
+	font-size: 24px;
+	text-transform: uppercase;
+
+	a {
+		color: $text-color-light;
+
+		&:hover {
+			color: $accent-color;
+		}
+	}
+
+	[class^="col-sm-6"] &,
+	[class^="col-lg-4"] & {
+		font-size: 18px;
+	}
+
+	@include media-breakpoint-down(sm) {
+		font-size: 18px;
+	}
+}
+
+.entry-meta,
+.entry-categories {
+	font-size: 11px;
+	text-transform: uppercase;
+
+	a {
+		color: $text-color-light;
+	}
+}
+
+.entry-categories {
+	margin-bottom: 10px;
+	font-family: $secondary-font;
+	letter-spacing: $letter-spacing-base;
+	font-weight: 700;
+}
+
+.entry-meta {
+	letter-spacing: .2em;
+
+	span {
+		margin: 0 5px;
+	}
+}
+
+.entry-comments-link {
+	font-family: $secondary-font;
+	letter-spacing: $letter-spacing-base;
+	font-weight: 700;
+}
+
+.entry-thumb {
+	margin-bottom: 50px;
+
+	&.alignnone,
+	&.alignleft,
+	&.alignright,
+	&.aligncenter {
+		margin-top: 0;
+	}
+
+	[class^="col-sm-6"] &,
+	[class^="col-lg-4"] & {
+		margin-bottom: 30px;
+	}
+
+	@include media-breakpoint-down(sm) {
+		margin-bottom: 30px;
+	}
+}
+
+.entry-content {
+	@include clearfix;
+
+	h1, h2, h3, h4, h5, h6 {
+		margin: 35px 0 30px;
+		text-transform: uppercase;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	.fluid-width-video-wrapper,
+	audio,
+	video,
+	blockquote {
+		margin: 40px 0;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	blockquote {
+		font-size: 20px;
+		position: relative;
+		padding-left: 50px;
+		border: 0;
+
+		&::before {
+			content: "\00201C";
+			font-size: 5em;
+			line-height: 0;
+			position: absolute;
+			left: 0;
+			top: 40px;
+			opacity: .35;
+		}
+	}
+}
+
+.entry-content-intro {
+	font-size: 16px;
+	margin-bottom: 40px;
+}
+
+.entry-content-column-split {
+	margin: 30px 0;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	@include media-breakpoint-up(md) {
+		columns: 2;
+	}
+}
+
+.entry-more-wrap {
+	text-align: center;
+	position: relative;
+	margin-top: 25px;
+}
+
+.entry-more-btn {
+	background-color: $body-bg;
+
+	&:hover {
+		background-color: $body-bg;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		border-bottom: 1px solid $border-color;
+		z-index: -1;
+	}
+}
+
+.entry-tags {
+	margin-top: 15px;
+}
+
+.entry-author-box {
+	display: flex;
+	margin-bottom: $section-padding-lg;
+
+	@include media-breakpoint-down(md) {
+		margin-bottom: $section-padding-md;
+	}
+
+	@include media-breakpoint-down(sm) {
+		margin-bottom: $section-padding-sm;
+	}
+}
+
+.entry-author-thumbnail {
+	width: 150px;
+	flex: none;
+	margin-right: 30px;
+
+	@include media-breakpoint-down(md) {
+		width: 100px;
+		margin-right: 15px;
+	}
+}
+
+.entry-author-title {
+	margin-bottom: 0;
+	text-transform: uppercase;
+	font-family: $secondary-font;
+	font-size: 16px;
+}
+
+/* Items & Item Listings
+=================================== */
+.row-items {
+	margin-bottom: -30px;
+
+	&.no-gutters {
+		margin-bottom: 0;
+	}
+}
+
+.item {
+	margin-bottom: 30px;
+
+	.no-gutters & {
+		margin-bottom: 0;
+	}
+}
+
+.item-thumb {
+	margin-bottom: 20px;
+}
+
+.item-title {
+	font-size: 16px;
+	font-family: $secondary-font;
+	text-transform: uppercase;
+	letter-spacing: $letter-spacing-base;
+	margin-bottom: 7px;
+	font-weight: 700;
+	line-height: normal;
+
+	a {
+		color: $text-color-light;
+
+		&:hover {
+			color: $accent-color;
+		}
+	}
+}
+
+.item-subtitle {
+	line-height: normal;
+}
+
+// Isotope filtering
+.item-filters {
+	margin-bottom: 30px;
+
+	@include media-breakpoint-down(md) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+.item-filter {
+	@include button-transparent;
+	@include button-sm;
+	margin: 0 5px 5px;
+
+	@include media-breakpoint-down(md) {
+		margin: 1px;
+		flex: 1 0 49%;
+	}
+}
+
+.filter-active {
+	color: $button-text-color;
+	border-color: $button-bg-color;
+	background-color: $button-bg-color;
+}
+
+/* Pagination
+=================================== */
+.navigation {
+	margin: 20px 0 0;
+
+	a,
+	.page-numbers {
+		display: inline-block;
+		padding: 9px 15px;
+		font-size: 11px !important;
+		font-family: $secondary-font;
+		text-transform: uppercase;
+		margin-bottom: 3px;
+		border: 2px solid $border-color;
+		color: $text-color-light;
+		background: none;
+	}
+
+	a:hover, // sass-lint:disable-line force-pseudo-nesting
+	.current {
+		border-color: $accent-color;
+	}
+
+	.nav-links {
+		@include clearfix;
+	}
+
+	.nav-previous {
+		float: left;
+	}
+
+	.nav-next {
+		float: right;
+	}
+}
+
+.comment-navigation {
+	margin: 30px 0;
+}
+
+.page-links {
+	margin: 35px 0;
+
+	.page-number {
+		display: inline-block;
+		padding: 9px 15px;
+		font-size: 11px !important;
+		font-family: $secondary-font;
+		text-transform: uppercase;
+		margin-bottom: 3px;
+		border: 2px solid $border-color;
+		color: $text-color-light;
+		background: none;
+
+		&:hover {
+			border-color: $accent-color;
+		}
+	}
+
+	> .page-number {
+		border-color: $accent-color;
+	}
+
+	> a,
+	> span {
+		&:first-child {
+			margin-left: 10px;
+		}
+	}
+}
+
+/* Social Icons
+=================================== */
+.list-social-icons {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		display: inline-block;
+		margin: 3px 5px;
+	}
+}
+
+.social-icon {
+	display: inline-block;
+	font-size: 14px;
+	text-align: center;
+	color: $text-color;
+	border-radius: 50%;
+
+	&:hover {
+		color: $accent-color;
+	}
+
+	.header & {
+		color: inherit;
+		font-size: inherit;
+	}
+
+	.footer & {
+		color: $text-on-dark;
+	}
+}
